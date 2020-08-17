@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto",sans-serif;
+}
+body{
+    background-color: #13141b;
+    color: #ffffff;
+    background-image: url(images/bg-image.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top;
+}
+
+.form-control{
+    font-size: 20px;
+    padding: 22px;
+    border: none;
+    border-radius: 25px;
+}
+.btn{
+    border-radius: 1.5rem;
+    padding: 9px 20px;
+}
+
+.btn-privious{
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+.navbar-toggler {
+    border: none;
+}
+.search-box{
+    position: relative;
+}
+.search-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+}
+.single-result{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+}
+
+.author {
+    width: 650px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    border: 5px solid #e98f07;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+}
+.author strong {
+    display: inline-block;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+.author p {
+    font-size: 20px;
+}
+
+.author button {
+    font-size: 15px;
+    margin-left: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background-color: green;
+    color: white;
+}
+.author button:hover {
+    background-color: rgba(0, 128, 0,0.5);
+}
+.author button:focus {
+    outline: none;
+    box-shadow: 0px 0px 5px 4px rgba(0,0,0,0.3);
+}
+pre {
+    text-align: center;
+    background: lightgray;
+    border: 3px solid lightskyblue;
+    border-radius: 10px;
+    padding: 30px 20px;
+}
+
