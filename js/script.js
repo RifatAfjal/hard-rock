@@ -34,16 +34,13 @@ displayData = data => {
         });
     }
 
-    /* show the last 10 song when we click the search more than one time
-      if you open a lyrics in previous it will be hidden;*/
-    const para = document.querySelectorAll('.lyricsContainer .decorate');
-    for(let i = 0; i < (para.length - 10); i++){
-        para[i].style.display = "none";
+    // show the last 10 element 
+    const para = document.querySelector('.lyricsContainer').children;
+    const Arr = [...para];
+    const newArr = Arr.slice(0,Arr.length-10);
+    newArr.map(el => el.parentElement.removeChild(el));
 
-        if(para[i].childNodes.length != 1){
-            para[i].removeChild(para[i].childNodes[1]);
-        }
-    }
+    // for getting lyrics
     getLyrics ();
 };
 
@@ -106,8 +103,15 @@ lyrics = (artist, title,targetDiv) => {
 displayLyrics = (data,targetDiv) => {
     if(targetDiv.childNodes.length == 1){
         const lyricsElement = document.createElement('pre');
-        targetDiv.appendChild(lyricsElement)
-        lyricsElement.innerText = data.lyrics;
+        targetDiv.appendChild(lyricsElement);
+
+        if(data.lyrics === undefined){
+            lyricsElement.innerText = "Sorry, lyrics didn't find.";
+            lyricsElement.style.color = "red";
+        }else{
+            lyricsElement.innerText = data.lyrics; 
+        }
+        
     }else{
         targetDiv.removeChild(targetDiv.childNodes[1]);
     }
