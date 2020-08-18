@@ -1,13 +1,8 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Roboto",sans-serif;
-}
+
 body{
     background-color: #13141b;
     color: #ffffff;
-    background-image: url(images/bg-image.png);
+    background-image: url(../images/bg-image.png);
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: top;
