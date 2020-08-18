@@ -34,10 +34,15 @@ displayData = data => {
         });
     }
 
-    // show the last 10 song when we click the search more than one time
-    const para = document.querySelectorAll('.author');
+    /* show the last 10 song when we click the search more than one time
+      if you open a lyrics in previous it will be hidden;*/
+    const para = document.querySelectorAll('.lyricsContainer .decorate');
     for(let i = 0; i < (para.length - 10); i++){
         para[i].style.display = "none";
+
+        if(para[i].childNodes.length != 1){
+            para[i].removeChild(para[i].childNodes[1]);
+        }
     }
     getLyrics ();
 };
@@ -48,6 +53,7 @@ setData = (title,artist) => {
     
     // create div for title,artist,button and lyrics
     const divContainer = document.createElement('div');
+    divContainer.classList.add('decorate')
     
     // create div for title,artist and button
     const div = document.createElement('div');
@@ -81,8 +87,6 @@ getLyrics = () => {
     lyricsBtnsArr.map(btn => {
         btn.addEventListener('click', (e) => {
             const targetDiv = e.target.parentElement.parentElement;
-            targetDiv.classList.toggle('showHide');
-
             const getTitle = targetDiv.querySelector('strong').innerText;
             const getArtist = targetDiv.querySelector('p').innerText;
             lyrics(getArtist, getTitle,targetDiv);
@@ -95,17 +99,16 @@ lyrics = (artist, title,targetDiv) => {
     fetch(`https://api.lyrics.ovh/v1/${artist}/${title}`)
       .then(res => res.json())
       .then(json => displayLyrics(json,targetDiv))
+      .catch(error => alert("Data didn't find."))
 };
 
 // set lyric in pre tag
 displayLyrics = (data,targetDiv) => {
-    if(targetDiv.classList.contains('showHide')){
-        const getAuthor = document.querySelector('.showHide');
+    if(targetDiv.childNodes.length == 1){
         const lyricsElement = document.createElement('pre');
-        getAuthor.appendChild(lyricsElement)
+        targetDiv.appendChild(lyricsElement)
         lyricsElement.innerText = data.lyrics;
     }else{
         targetDiv.removeChild(targetDiv.childNodes[1]);
     }
-    
 };
