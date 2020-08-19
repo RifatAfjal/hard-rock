@@ -5,7 +5,7 @@ const searchBtn = document.querySelector('.search-btn');
 inputName.addEventListener('keyup', (e) => {
     getAPI(inputName.value);
 
-    // when we press backspace button it work's
+    // when we press backspace button it works
     if(e.keyCode === 8){
         getAPI(inputName.value)
     };
@@ -62,29 +62,14 @@ setData = (title,artist) => {
     const divContainer = document.createElement('div');
     divContainer.classList.add('decorate')
     
-    // create div for title,artist and button
-    const div = document.createElement('div');
-    div.classList.add('author','lead');
-   
-    // create a div for title and artist 
-    const container = document.createElement('div');
-
-    // append them 
+    divContainer.innerHTML = `<div class="author lead">
+                                <div>
+                                    <strong>${title}</strong>
+                                    <p>${artist}</p>
+                                </div>
+                                <button>Get lyrics</button>
+                             </div>`
     lyricsContainer.appendChild(divContainer);
-    divContainer.appendChild(div);
-    div.appendChild(container);
-
-    createTag("strong", title, container);
-    createTag('p',artist, container);
-    createTag('button', "Get lyrics", div);
-}
-
-
-// for avoid duplicate use this function for creating element
-createTag = (tag,text,appendTag) => {
-    const generateTag = document.createElement(tag); 
-    generateTag.innerText = text;
-    appendTag.appendChild(generateTag);
 };
 
 // get  lyrics by this function
