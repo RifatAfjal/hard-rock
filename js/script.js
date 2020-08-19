@@ -1,6 +1,16 @@
 const inputName = document.getElementById('inputSongName');
 const searchBtn = document.querySelector('.search-btn');
 
+// set keypress event for searching
+inputName.addEventListener('keyup', (e) => {
+    getAPI(inputName.value);
+
+    // when we press backspace button it work's
+    if(e.keyCode === 8){
+        getAPI(inputName.value)
+    };
+});
+
 //set click button 
 searchBtn.addEventListener('click',() => {
     const getSongName = inputName.value;
